@@ -1,5 +1,5 @@
 <div class="layout-column">
-  <form class="contact-form">
+  <form class="contact-form" [formGroup]="guestForm" (ngSubmit)="onSubmit()">
     <div class="layout-row align-items-center justify-content-center mt-50">
       <input
         #guestNameReference
@@ -8,6 +8,7 @@
         data-test-id="name-input"
         required
         placeholder="Guest Name"
+        formControlName="name"
       />
       <input
         #startDateReference
@@ -16,6 +17,7 @@
         data-test-id="start-date"
         required
         placeholder="Start Date"
+        formControlName="startDate"
       />
       <input
         #endDateReference
@@ -24,10 +26,18 @@
         data-test-id="end-date"
         required
         placeholder="End Date"
+        formControlName="endDate"
       />
     </div>
     <div class="layout-row align-items-center justify-content-center mt-50">
-      <button data-test-id="submit-button" class="w-30">Add to Menu</button>
+      <button
+        data-test-id="submit-button"
+        class="w-30"
+        type="submit"
+        [disabled]="guestForm.invalid"
+      >
+        Add to Menu
+      </button>
     </div>
   </form>
 </div>
