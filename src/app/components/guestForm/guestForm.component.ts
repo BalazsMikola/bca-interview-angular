@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import {
   FormControl,
   FormGroup,
   ValidationErrors,
   Validators,
 } from '@angular/forms';
+import { Guest } from 'src/app/interfaces/guest.interface';
 
 @Component({
   selector: 'guest-form',
@@ -12,6 +13,8 @@ import {
   styleUrls: ['./guestForm.component.scss'],
 })
 export class GuestForm {
+  @Output() onGuestAddedEvent = new EventEmitter<Guest>();
+
   guestForm = new FormGroup(
     {
       name: new FormControl('', Validators.required),
@@ -24,6 +27,7 @@ export class GuestForm {
   );
 
   onSubmit(): void {
+    this.onGuestAddedEvent.emit(this.guestForm.value as Guest);
     this.guestForm.reset();
   }
 

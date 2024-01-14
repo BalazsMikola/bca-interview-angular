@@ -24,7 +24,7 @@ export const mealReducer = createReducer(
         updatedDates[stringDate] = [];
       }
 
-      updatedDates[stringDate].push(guest);
+      updatedDates[stringDate] = [...updatedDates[stringDate], guest];
       startDate = new Date(startDate.setDate(startDate.getDate() + 1));
     }
 

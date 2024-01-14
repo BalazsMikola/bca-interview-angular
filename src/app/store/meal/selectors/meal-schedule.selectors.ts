@@ -9,3 +9,8 @@ export const selectIsLoading = createSelector(
   selectMealState,
   (state: MealState) => state.isLoading
 );
+
+export const selectDates = createSelector(
+  selectMealState,
+  (state: MealState) => state.dates
+);

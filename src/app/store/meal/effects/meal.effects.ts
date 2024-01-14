@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { switchMap, tap } from 'rxjs';
+import { map, switchMap, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { getTestData } from '../actions/meal.actions';
+import { addNewGuest, getTestData, setLoading } from '../actions/meal.actions';
 import { MealService } from '../../../services/meal.service';
 
 @Injectable()
@@ -18,6 +18,15 @@ export class MealEffects {
         })
       ),
     { dispatch: false }
+  );
+
+  addNewGuest$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(addNewGuest),
+        map(() => setLoading({ isLoading: false }))
+      ),
+    { dispatch: true }
   );
 
   constructor(

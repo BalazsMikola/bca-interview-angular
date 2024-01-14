@@ -1,4 +1,9 @@
+import { KeyValue } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { Guest } from 'src/app/interfaces/guest.interface';
+import { selectDates } from 'src/app/store/meal/selectors/meal-schedule.selectors';
 
 @Component({
   selector: 'meal-schedule',
@@ -6,9 +11,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mealSchedule.component.scss'],
 })
 export class MealSchedule implements OnInit {
-  guestList: any;
+  dates$: Observable<{ [date: string]: Guest[] }>;
 
-  constructor() {}
+  constructor(private store: Store) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.dates$ = this.store.select(selectDates);
+  }
+
+  orderByDate(value: KeyValue<string, Guest[]>): any {
+    return Object.keys(value).sort(
+      (a, b) => new Date(a).getTime() - new Date(b).getTime()
+    );
+  }
 }
