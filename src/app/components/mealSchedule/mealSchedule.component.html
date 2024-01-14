@@ -13,26 +13,23 @@
       </thead>
       <tbody data-test-id="meal-schedule">
         <tr
-          *ngFor="
-            let date of dates$ | async | keyvalue : orderByDate;
-            let idx = index
-          "
+          *ngFor="let row of dates$ | async | sortDates"
           class="slide-up-fade-in"
         >
-          <td data-test-id="date">{{ date.key | date : "YYYY-MM-dd" }}</td>
+          <td data-test-id="date">{{ row.date }}</td>
           <td>
             <ul data-test-id="breakfast-list">
-              <li *ngFor="let guest of date.value">{{ guest.name }}</li>
+              <li *ngFor="let guest of row.guests">{{ guest.name }}</li>
             </ul>
           </td>
           <td>
             <ul data-test-id="lunch-list">
-              <li *ngFor="let guest of date.value">{{ guest.name }}</li>
+              <li *ngFor="let guest of row.guests">{{ guest.name }}</li>
             </ul>
           </td>
           <td>
             <ul data-test-id="dinner-list">
-              <li *ngFor="let guest of date.value">{{ guest.name }}</li>
+              <li *ngFor="let guest of row.guests">{{ guest.name }}</li>
             </ul>
           </td>
         </tr>

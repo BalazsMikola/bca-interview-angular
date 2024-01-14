@@ -18,10 +18,4 @@ export class MealSchedule implements OnInit {
   ngOnInit() {
     this.dates$ = this.store.select(selectDates);
   }
-
-  orderByDate(value: KeyValue<string, Guest[]>): any {
-    return Object.keys(value).sort(
-      (a, b) => new Date(a).getTime() - new Date(b).getTime()
-    );
-  }
 }

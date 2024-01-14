@@ -18,13 +18,13 @@ export const mealReducer = createReducer(
     const updatedDates = { ...state.dates };
 
     while (startDate <= endDate) {
-      const stringDate = startDate.toISOString().split('T')[0];
+      const startDateStr = startDate.toISOString().split('T')[0];
 
-      if (!updatedDates[stringDate]) {
-        updatedDates[stringDate] = [];
+      if (!updatedDates[startDateStr]) {
+        updatedDates[startDateStr] = [];
       }
 
-      updatedDates[stringDate] = [...updatedDates[stringDate], guest];
+      updatedDates[startDateStr] = [...updatedDates[startDateStr], guest];
       startDate = new Date(startDate.setDate(startDate.getDate() + 1));
     }
 

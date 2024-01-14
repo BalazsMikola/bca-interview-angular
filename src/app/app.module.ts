@@ -11,6 +11,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { EffectsModule } from '@ngrx/effects';
 import { MealStoreModule } from './store/meal/meal-schedule-store.module';
+import { SortDatesPipe } from './pipes/sortDates.pipe';
 
 const environment = {
   development: true,
@@ -18,7 +19,7 @@ const environment = {
 };
 
 @NgModule({
-  declarations: [AppComponent, MealSchedule, GuestForm],
+  declarations: [AppComponent, MealSchedule, GuestForm, SortDatesPipe],
   imports: [
     BrowserModule,
     FormsModule,
