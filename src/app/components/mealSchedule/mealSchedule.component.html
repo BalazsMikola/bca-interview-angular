@@ -15,6 +15,7 @@
         <tr
           *ngFor="let row of dates$ | async | sortDates"
           class="slide-up-fade-in"
+          [ngClass]="{ highlighted: hasAnySpecialGuest(row.guests) }"
         >
           <td data-test-id="date">{{ row.date }}</td>
           <td>

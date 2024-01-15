@@ -20,6 +20,7 @@ export class GuestForm {
       name: new FormControl('', Validators.required),
       startDate: new FormControl('', Validators.required),
       endDate: new FormControl('', Validators.required),
+      isSpecial: new FormControl(false),
     },
     {
       validators: this.dateCompareValidator(),
