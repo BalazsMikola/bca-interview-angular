@@ -12,10 +12,10 @@ export const mealReducer = createReducer(
     })
   ),
   on(addNewGuest, (state: MealState, { guest }): MealState => {
+    const updatedDates = { ...state.dates };
+
     let startDate = new Date(guest.startDate);
     const endDate = new Date(guest.endDate);
-
-    const updatedDates = { ...state.dates };
 
     while (startDate <= endDate) {
       const startDateStr = startDate.toISOString().split('T')[0];
